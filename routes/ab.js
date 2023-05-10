@@ -3,8 +3,10 @@ var router = express.Router();
 var app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 router.use(bodyParser.urlencoded({ extended: true }));
+router.use(cookieParser());
 router.use(session({
   secret: '1234',
   resave: false,
@@ -12,13 +14,20 @@ router.use(session({
 }));
 
 
-router.get('/abform', function(req, res,next)  {
+router.get('/page1', function(req, res,next)  {
   const branchname = '';
   const branchmandal = '';
-    res.render('abform', {branchname: branchname,branchmandal: branchmandal});
+  const user = req.cookies.user;
+ // Check if the user is logged in
+  if (user && user.loggedIn) {
+    res.render('page1', {branchname: branchname,branchmandal: branchmandal});
+  } else {
+    res.redirect('/');
+  }
 });
+  
 
-router.post('/abform',function(req, res,next)  {
+router.post('/page1',function(req, res,next)  {
   req.session.branchname = req.body.branchname;
   req.session.branchmandal = req.body.branchmandal;
   res.redirect('/ab/abform2');
