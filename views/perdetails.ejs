@@ -6,6 +6,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="/static/rvgstylesheet.css">
+    <a id="header-button" href="/home"><b>INDEX</b></a>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
@@ -22,164 +24,162 @@
         <a href="/ab/perdetails" class="list-group-item list-group-item-action active"><b>Personal
             Details</b></a>
         <a href="/ab/scheduleprop" class="list-group-item list-group-item-action"><b>Schedule Property Details</b></a>
-        <a class="list-group-item list-group-item-action"><b>Scrutinised Document List</b></a>
+        <a href="/ab/scrunlst" class="list-group-item list-group-item-action"><b>Scrutinised Document List</b></a>
         <a class="list-group-item list-group-item-action"><b>Particulars Of Documents Of Mortgagor</b></a>
-        <a class="list-group-item list-group-item-action"><b>Search Report Based On Certified Copies</b></a>
+        <a href="/ab/searchrprt" class="list-group-item list-group-item-action"><b>Search Report Based On Certified Copies</b></a>
         <a class="list-group-item list-group-item-action"><b>General Search Based On E.C</b></a>
         <a class="list-group-item list-group-item-action"><b>Flow of title</b></a>
         <a class="list-group-item list-group-item-action"><b>Document review</b></a>
       </div>
     </div>
-    <div class="div">
-      <div class="list-group list-group-horizontal">
-        <a href="scribe.html" class="list-group-item list-group-item-action"><b>Scribe Affidavit</b></a>
-        <a href="/ab/perdetails" class="list-group-item list-group-item-action"><b>Andhrabank Opinion</b></a>
-        <a href="history.html" class="list-group-item list-group-item-action"><b>History</b></a>
-      </div>
-      <div class="customform">
+    <h3><b>Personal Details</b></h3>
+    <div class="customform" style="width: 50vw">
+        <div class="navbar">
+          <a href="/home">Index</a>
+        </div>
         <form action="/ab/perdetails" method="post">
           <div class="mb-3 row">
             <label for="branchname" class="col-sm-3 col-form-label">Branch Name:</label>
             <div class="col-sm-7">
-              <input type="text" id="bname" class="form-control" name="branchname" />
+              <input type="text" id="branchname" class="form-control" name="branchname" value="<%= branchname %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="branchmandal" class="col-sm-3 col-form-label">Branch Mandal:</label>
             <div class="col-sm-7">
-              <input type="text" id="bmname" name="branchmandal" class="form-control" />
+              <input type="text" id="branchmandal" name="branchmandal" class="form-control" value="<%= branchmandal %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="branchdistrict" class="col-sm-3 col-form-label">Branch District:</label>
             <div class="col-sm-7">
-              <input type="text" id="bdname" name="branchdistrict" class="form-control" />
+              <input type="text" id="branchdistrict" name="branchdistrict" class="form-control" value="<%= branchdistrict %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="clientname" class="col-sm-3 col-form-label">Client Name:</label>
             <div class="col-sm-7">
-              <input type="text" id="cname" name="clientname" class="form-control" />
+              <input type="text" id="clientname" name="clientname" class="form-control" value="<%= clientname %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="clientfather" class="col-sm-3 col-form-label">Client's Father:</label>
             <div class="col-sm-7">
-              <input type="text" id="cfname" name="clientfather" class="form-control" />
+              <input type="text" id="clientfather" name="clientfather" class="form-control" value="<%= clientfather %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="clientvillage" class="col-sm-3 col-form-label">Client's Village:</label>
             <div class="col-sm-7">
-              <input type="text" id="cvname" name="clientvillage" class="form-control" />
+              <input type="text" id="clientvillage" name="clientvillage" class="form-control" value="<%= clientvillage %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="clientmandal" class="col-sm-3 col-form-label">Client's Mandal:</label>
             <div class="col-sm-7">
-              <input type="text" id="cmname" name="clientmandal" class="form-control" />
+              <input type="text" id="clientmandal" name="clientmandal" class="form-control" value="<%= clientmandal %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="clientdistrict" class="col-sm-3 col-form-label">Client's District:</label>
             <div class="col-sm-7">
-              <input type="text" id="cdname" name="clientdistrict" class="form-control" />
+              <input type="text" id="clientdistrict" name="clientdistrict" class="form-control" value="<%= clientdistrict %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="regdocdate" class="col-sm-3 col-form-label">Reg DOC date:</label>
             <div class="col-sm-7">
-              <input type="text" id="rname" name="regdocdate" class="form-control" />
+              <input type="text" id="regdocdate" name="regdocdate" class="form-control" value="<%= regdocdate %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="sroname" class="col-sm-3 col-form-label">SRO Name:</label>
             <div class="col-sm-7">
-              <input type="text" id="sname" name="sroname" class="form-control" />
+              <input type="text" id="sroname" name="sroname" class="form-control" value="<%= sroname %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="docno" class="col-sm-3 col-form-label">DOC No:</label>
             <div class="col-sm-7">
-              <input type="text" id="dname" name="docno" class="form-control" />
+              <input type="text" id="docno" name="docno" class="form-control" value="<%= docno %>"/>
             </div>
           </div>
           <div class="mb-3 row">
             <label for="propsurno" class="col-sm-3 col-form-label">Property survey no:</label>
             <div class="col-sm-7">
-              <input type="text" id="psname" name="propsurno" class="form-control" />
+              <input type="text" id="propsurno" name="propsurno" class="form-control" value="<%= propsurno %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="propdoorno" class="col-sm-3 col-form-label">Property Door No:</label>
             <div class="col-sm-7">
-              <input type="text" id="pdname" name="propdoorno" class="form-control" />
+              <input type="text" id="propdoorno" name="propdoorno" class="form-control" value="<%= propdoorno %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="propolddoorno" class="col-sm-3 col-form-label">Property old door no:</label>
             <div class="col-sm-7">
-              <input type="text" id="podname" name="propolddoorno" class="form-control" />
+              <input type="text" id="propolddoorno" name="propolddoorno" class="form-control" value="<%= propolddoorno %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="proparea" class="col-sm-3 col-form-label">Property Area:</label>
             <div class="col-sm-7">
-              <input type="text" id="paname" name="proparea" class="form-control" />
+              <input type="text" id="proparea" name="proparea" class="form-control" value="<%= proparea %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="propdistrict" class="col-sm-3 col-form-label">Property District:</label>
             <div class="col-sm-7">
-              <input type="text" id="pdname" name="propdistrict" class="form-control" />
+              <input type="text" id="propdistrict" name="propdistrict" class="form-control" value="<%= propdistrict %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="propmandal" class="col-sm-3 col-form-label">Property Mandal:</label>
             <div class="col-sm-7">
-              <input type="text" id="pmname" name="propmandal" class="form-control" />
+              <input type="text" id="propmandal" name="propmandal" class="form-control" value="<%= propmandal %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="propvillage" class="col-sm-3 col-form-label">Property Village:</label>
             <div class="col-sm-7">
-              <input type="text" id="pvname" name="propvillage" class="form-control" />
+              <input type="text" id="propvillage" name="propvillage" class="form-control" value="<%= propvillage %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="proptype" class="col-sm-3 col-form-label">Property Type:</label>
             <div class="col-sm-7">
-              <input type="text" id="ptname" name="proptype" class="form-control" />
+              <input type="text" id="proptype" name="proptype" class="form-control" value="<%= proptype %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="propage" class="col-sm-3 col-form-label">Property Age:</label>
             <div class="col-sm-7">
-              <input type="text" id="paname" name="propage" class="form-control" />
+              <input type="text" id="propage" name="propage" class="form-control" value="<%= propage %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="propsinceyr" class="col-sm-3 col-form-label">Property Since Year:</label>
             <div class="col-sm-7">
-              <input type="text" id="psyname" name="propsinceyr" class="form-control" />
+              <input type="text" id="propsinceyr" name="propsinceyr" class="form-control" value="<%= propsinceyr %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="encdate" class="col-sm-3 col-form-label">Encumberence Date:</label>
             <div class="col-sm-7">
-              <input type="text" id="edname" name="encdate" class="form-control" />
+              <input type="text" id="encdate" name="encdate" class="form-control" value="<%= encdate %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="bvsno" class="col-sm-3 col-form-label">Book/Volume/Scan No:</label>
             <div class="col-sm-7">
-              <input type="text" id="bname" name="bvsno" class="form-control" />
+              <input type="text" id="bvsno" name="bvsno" class="form-control" value="<%= bvsno %>" />
             </div>
           </div>
           <div class="mb-3 row">
             <label for="executants" class="col-sm-3 col-form-label">Executants:</label>
             <div class="col-sm-7">
-              <input type="text" id="ename" name="executants" class="form-control" />
+              <input type="text" id="executants" name="executants" class="form-control" value="<%= executants %>" />
             </div>
           </div>
           <div class="mb-3 row">  

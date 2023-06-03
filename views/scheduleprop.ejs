@@ -9,6 +9,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" href="/static/rvgstylesheet.css">
+    <a id="header-button" href="/home"><b>INDEX</b></a>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -30,13 +31,13 @@
            class="list-group-item list-group-item-action active"
             ><b>Schedule Property Details</b></a
           >
-          <a class="list-group-item list-group-item-action"
+          <a href="/ab/scrunlst" class="list-group-item list-group-item-action"
             ><b>Scrutinised Document List</b></a
           >
           <a class="list-group-item list-group-item-action"
             ><b>Particulars Of Documents Of Mortgagor</b></a
           >
-          <a class="list-group-item list-group-item-action"
+          <a href="/ab/searchrprt" class="list-group-item list-group-item-action"
             ><b>Search Report Based On Certified Copies</b></a
           >
           <a class="list-group-item list-group-item-action"
@@ -50,21 +51,11 @@
           >
         </div>
       </div>
-      <div class="div">
-        <div class="list-group list-group-horizontal">
-          <a href="scribe.html" class="list-group-item list-group-item-action"
-            ><b>Scribe Affidavit</b></a
-          >
-          <a
-            href="/ab/perdetails"
-            class="list-group-item list-group-item-action"
-            ><b>Andhrabank Opinion</b></a
-          >
-          <a href="history.html" class="list-group-item list-group-item-action"
-            ><b>History</b></a
-          >
-        </div>
+      <h3><b>Schedule Property Details</b></h3>
         <div class="customform">
+          <div class="navbar">
+            <a href="/home">Index</a>
+          </div>
           
 <form action="/ab/scheduleprop" method="POST">
   <textarea rows="6" cols="70">
@@ -76,7 +67,7 @@
   <br>
   <br>
   <br>
-  <input type="submit" value="Submit">
+  <button type="submit" class="btn btn-primary mb-3">Submit</button>
 </form>
         </div>
       </div>
