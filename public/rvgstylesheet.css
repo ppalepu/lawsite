@@ -1,103 +1,130 @@
 .divstyle {
-    text-align: center;
-    background-color: black;
-    font-size: xx-large;
-    color: white;
-    padding-top: 30px;
-    height: 15vh;
-    width: 100%;
-    margin: -8px -8px 0 0;
-  }
-  .footer {
-    position: fixed;
-    text-align: center;
-    background-color: black;
-    font-size: larger;
-    color: white;
-    bottom: 0%;
-    left: 0%;
-    width: 100%;
-    height: 7vh;
-    padding-top: 5px;
-  }
-  #navcontent {
-    display: list-item;
-    justify-content: left;
-    height: 10vh;
-    list-style: none;
-    margin-top: 10px;
-  }
-  #topnav {
-    display: list-item;
-    justify-content: left;
-    height: 10vh;
-    list-style: none;
-    margin-top: 10px;
-    width: 100%;
-  }
-  ul li {
-    list-style: none;
-    margin: 15px;
-    padding: 20px;
-  }
-  ul li a {
-    padding: 1px;
-    color: black;
-    text-decoration: none;
-    font-size: larger;
-  }
-  ul li a:hover {
-    background-color: orangered;
-    border-radius: 10px;
-    padding: 5px;
-    cursor: pointer;
-  }
-  .container {
-    padding: 30px;
-    display: grid;
-    background-color: rgb(16, 224, 224);
-    height: 80vh;
-    width: 30vw;
-   }
-  .flexContainer {
-    display: flex;
-    width: 100vw;
-    height: 50vh;
-  
-  }
-  .div {
-    text-align: center;
-    font-size: large;
-    padding: 20px;
-    width: 100%;
-    height: fit-content;
-  }
-  .topnav {
-    display: block;
-    list-style-type: none;
-    text-align: center;
-    text-decoration: none;
-  }
-  .list-group-item-action:focus,
-  .list-group-item-action:hover {
-    background-color: orangered;
-  }
-  .list-group-item {
-    background-color: inherit;
-    border: none;
-    padding: 15px;
-  }
-  .customform {
-    width: 60vw;
-    margin-left: 10vw;
-    text-align: left;
-    margin-top: 1vw;
-    height: 60vh;
-    overflow-x:hidden;    
-  }
-  table, th, td {
-    border:1px solid black;
-    padding:10px;
-    width:25px;
+  text-align: center;
+  background-color: black;
+  font-size: xx-large;
+  color: white;
+  padding-top: 30px;
+  height: 15vh;
+  width: 100%;
+  margin: -8px -8px 0 0;
+}
+.footer {
+  position: fixed;
+  text-align: center;
+  background-color: black;
+  font-size: larger;
+  color: white;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  height: 7vh;
+  padding-top: 5px;
+}
+#navcontent {
+  display: list-item;
+  justify-content: left;
+  height: 10vh;
+  list-style: none;
+  margin-top: 10px;
+}
+#topnav {
+  display: list-item;
+  justify-content: left;
+  height: 10vh;
+  list-style: none;
+  margin-top: 10px;
+  width: 100%;
+}
+ul li {
+  list-style: none;
+  margin: 15px;
+  padding: 20px;
+}
+ul li a {
+  padding: 1px;
+  color: white;
+  text-decoration: none;
+  font-size: larger;
+}
+ul li a:hover {
+  background-color: blue;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  color: white;
+}
+.container {
+  padding: 30px;
+  display: grid;
+  background-color: rgb(16, 224, 224);
+  height: 80vh;
+  width: 30vw;
+ }
+.flexContainer {
+  display: flex;
+  width: 100vw;
+  height: 50vh;
 
-  }
+}
+.div {
+  text-align: center;
+  font-size:large;
+  padding: 20px;
+  width: 100%;
+  height: fit-content;
+}
+.topnav {
+  display: block;
+  list-style-type: none;
+  text-align: center;
+  text-decoration: none;
+}
+.list-group-item-action:focus,
+.list-group-item-action:hover {
+  background-color:blue;
+}
+.list-group-item {
+  background-color: inherit;
+  border: none;
+  padding: 15px;    
+}
+.customform {
+  width: 60vw;
+  margin-left: 10vw;
+  text-align: left;
+  margin-top: 1vw;
+  height: 60vh;
+  overflow-x:hidden;    
+}
+.list-group-item:hover, .list-group-item-action :hover{
+  cursor: pointer;
+  color: white;
+}
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  overflow: hidden;
+  color: white;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 30px;
+  
+}
+
+#header-button {
+  float: left;
+  margin-left: 30px;
+  margin-top: 40px;
+  background-color: black;
+  color: white;
+}
+.mytable {
+border: 1px solid;
+}
