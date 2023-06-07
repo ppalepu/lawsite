@@ -42,62 +42,26 @@
         <a href="/home">Index</a>
     </div>
 
-  <form action="/ab/searchrprt" method="POST">
-    <div class="table-responsive">
-      <table id="mytable" class="table table-fixed table-bordered align-middle mytable">
-        <tr>
-          <td class="col-md-1">Description of the property</td>
-          <td contenteditable="true"> </td>
-          </tr>
-         <tr> 
-          <td>DOC No</td>
-          <td contenteditable="true"><%= docno %></td>
+  <form action="/ab/final_document" method="POST">
 
-          </tr>
-          <tr>
-          <td>Name Of The Document</td>
-          <td class="col-md-1" contenteditable="true">Registered Partition Deed</td>
-        </tr>
-        <tr>
-          <td>Date Of Execution</td>
-          <td contenteditable="true"> </td>
-        </tr>
-        <tr>
-          <td>Executants</td>
-          <td contenteditable="true"><%= executants %></td>
-        </tr>
-        <tr>
-          <td>Claimants</td>
-          <td contenteditable="true"> </td>
-        </tr>
-        <tr>
-          <td>Office where the doc. Regd.</td>
-          <td contenteditable="true"> </td>
-        </tr>
-        <tr>
-          <td>Book No./Volume No./Scan No.</td>
-          <td contenteditable="true"><%= bvsno %> </td>
-        </tr>
-        <tr>
-          <td>No. of pages</td>
-          <td contenteditable="true">7</td>
-        </tr>
-         <tr>
-          <td>Reg DOC date</td>
-          <td contenteditable="true"><%= regdocdate %></td>
-        </tr>
-        <tr>
-          <td>Certified copy No.</td>
-          <td contenteditable="true">200/200</td>
-        </tr>
-      </table>
-<br>
-<br>  
-<div class="col-sm-3">
-<button type="submit" class="btn btn-primary mb-3">Submit</button>
-</div>                      
-</div>
-</form>
-<div class="footer">RVG Subbarao legal service Ltd</div>
+<body>
+  <h1>Final Document</h1>
+  <table>
+    <tr>
+      <th>S NO</th>
+      <th>Date</th>
+      <th>Description Of The Documents</th>
+      <th>Nature</th>
+    </tr>
+    <% for (let i = 0; i < tableData.sno.length; i++) { %>
+    <tr>
+      <td><%= tableData.sno[i] %></td>
+      <td><%= tableData.date[i] %></td>
+      <td><%= tableData.description[i] %></td>
+      <td><%= tableData.nature[i] %></td>
+    </tr>
+    <% } %>
+  </table>
 </body>
+
 </html>

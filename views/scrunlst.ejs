@@ -49,13 +49,13 @@
         <a href="/ab/perdetails" class="list-group-item list-group-item-action"><b>Personal Details</b></a>
         <a href="/ab/scheduleprop" class="list-group-item list-group-item-action"><b>Schedule Property Details</b></a>
         <a href="/ab/scrunlst" class="list-group-item list-group-item-action active"><b>Scrutinised Document List</b></a>
-        <a class="list-group-item list-group-item-action"><b>Particulars Of Documents Of Mortgagor</b></a>
+        <a href="/ab/mortgagor" class="list-group-item list-group-item-action"><b>Particulars Of Documents Of Mortgagor</b></a>
         <a href="/ab/searchrprt" class="list-group-item list-group-item-action"><b>Search Report Based On Certified Copies</b></a>
-        <a class="list-group-item list-group-item-action"><b>General Search Based On E.C</b></a>
+        <a href="/ab/ec" class="list-group-item list-group-item-action"><b>General Search Based On E.C</b></a>
         <a class="list-group-item list-group-item-action"><b>Flow of title</b></a>
         <a class="list-group-item list-group-item-action"><b>Document review</b></a>
       </div>
-    </div>
+    </div> 
     <div class="div">
       <h3><b>Scrutinised Document List</b></h3>
       <div class="customform" style="width: 50vw">
@@ -72,15 +72,15 @@
                 <th>Nature</th>
               </tr>
               <tr>
-                <td contenteditable="true">01</td>
-                <td class="col-md-3" contenteditable="true">27-03-2002</td>
-                <td class="col-md-6" contenteditable="true">
-                  REGD. PARTITION DEED IN FAVOUR OF 1.MANCHAM SUBBARAO
+                <td contenteditable="true"><input type="text" name="sno" value="01"></td>
+                <td class="col-md-3" contenteditable="true"><input type="text" name="date" value="27-03-2002"></td>
+                <td class="col-md-6" contenteditable="true"><input type="text" name="description" 
+                  value= "REGD. PARTITION DEED IN FAVOUR OF 1.MANCHAM SUBBARAO
                   2.MANCHAM SATYANARAYANA 3.MANCHAM MUTYALARAO(loan
-                  applicant)INTERSE (DOC. NO. <%= docno %> <%= sroname %> SRO –
-                  ORIGINAL PARTITION DEED FOR THE SCHEDULE PROPERTY).
+                  applicant)INTERSE (DOC. NO.<%= docno %> <%= sroname %> SRO –
+                  ORIGINAL PARTITION DEED FOR THE SCHEDULE PROPERTY).">
                 </td>
-                <td contenteditable="true">Original</td>
+                <td contenteditable="true"><input type="text" name="nature" value="Original"></td>
               </tr>
             </table>
             <input type="button" value="Add Row" onclick="addRow()" />

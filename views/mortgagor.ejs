@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Search report</title>
+  <title>Particulars Of Documents Of Mortgagor</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="/static/rvgstylesheet.css">
-    <a id="header-button" href="/home"><b>INDEX</b></a>
-
+  <button id="header-button" href="#"><b>INDEX</b></button>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
@@ -23,9 +22,9 @@
     <a href="/ab/perdetails" class="list-group-item list-group-item-action"><b>Personal Details</b></a>
     <a href="/ab/scheduleprop" class="list-group-item list-group-item-action"><b>Schedule Property Details</b></a>
     <a href="/ab/scrunlst" class="list-group-item list-group-item-action "><b>Scrutinised Document List</b></a>
-    <a href="/ab/mortgagor" class="list-group-item list-group-item-action "><b>Particulars Of Documents Of Mortgagor</b></a>
-        <a href="/ab/searchrprt" class="list-group-item list-group-item-action active"><b>Search Report Based On Certified Copies</b></a>
-        <a href="/ab/ec"class="list-group-item list-group-item-action"><b>General Search Based On E.C</b></a>
+    <a href="/ab/mortgagor"  class="list-group-item list-group-item-action active "><b>Particulars Of Documents Of Mortgagor</b></a>
+        <a href="/ab/searchrprt" class="list-group-item list-group-item-action "><b>Search Report Based On Certified Copies</b></a>
+        <a class="list-group-item list-group-item-action"><b>General Search Based On E.C</b></a>
         <a class="list-group-item list-group-item-action"><b>Flow of title</b></a>
         <a class="list-group-item list-group-item-action"><b>Document review</b></a>
   </div>
@@ -36,13 +35,13 @@
   <div class="list-group list-group-horizontal">
         
   </div>
-  <h3><b>Search Report Based On Certified Copies</b></h3>
+  <h3><b>Particulars Of Documents Of Mortgagor</b></h3>
   <div class="customform" style="width: 50vw">
     <div class="navbar">
         <a href="/home">Index</a>
     </div>
 
-  <form action="/ab/searchrprt" method="POST">
+  <form action="/ab/mortgagor" method="POST">
     <div class="table-responsive">
       <table id="mytable" class="table table-fixed table-bordered align-middle mytable">
         <tr>
@@ -52,7 +51,6 @@
          <tr> 
           <td>DOC No</td>
           <td contenteditable="true"><%= docno %></td>
-
           </tr>
           <tr>
           <td>Name Of The Document</td>
@@ -76,19 +74,15 @@
         </tr>
         <tr>
           <td>Book No./Volume No./Scan No.</td>
-          <td contenteditable="true"><%= bvsno %> </td>
+          <td contenteditable="true"><%= bvsno %></td>
         </tr>
         <tr>
           <td>No. of pages</td>
           <td contenteditable="true">7</td>
         </tr>
          <tr>
-          <td>Reg DOC date</td>
+          <td>Reg DOC Date</td>
           <td contenteditable="true"><%= regdocdate %></td>
-        </tr>
-        <tr>
-          <td>Certified copy No.</td>
-          <td contenteditable="true">200/200</td>
         </tr>
       </table>
 <br>

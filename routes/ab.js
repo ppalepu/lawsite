@@ -121,10 +121,73 @@ router.get('/scrunlst', function(req, res,next)  {
 });
 
 router.post('/scrunlst',function(req, res,next)  {
- 
+  const sno = req.body.sno;
+  const date = req.body.date;
+  const description = req.body.description;
+  const nature = req.body.nature;
+
+  // Store the table data in the session
+  req.session.tableData = {
+    sno: sno,
+    date: date,
+    description: description,
+    nature: nature
+  };
   req.session.sroname = req.body.sroname || req.session.sroname || '';
   req.session.docno = req.body.docno || req.session.docno || '';
    console.log('Session Variables:', req.session.sroname, req.session.docno, );
+  console.log(req.sessionID);
+  res.redirect('/ab/mortgagor');
+});
+
+app.post('/ab/scrunlst', (req, res) => {
+  const tableData = req.body;
+
+  // Store the tableData variable in the session
+  req.session.tableData = tableData;
+
+  // Redirect to the GET route
+  res.redirect('/ab/scrunlst');
+});
+
+// GET route for rendering the page with table data
+app.get('/ab/scrunlst', (req, res) => {
+  // Retrieve the tableData variable from the session
+  const tableData = req.session.tableData || {};
+
+  // Render the page with the tableData variable
+  res.render('scrunlst-page', { tableData });
+});
+
+router.get('/mortgagor', function(req, res,next)  {
+  const regdocdate = req.session.regdocdate || '';
+  const sroname = req.session.sroname;
+  const docno = req.session.docno;
+    const encdate = req.session.encdate;
+  const bvsno = req.session.bvsno;
+  const executants = req.session.executants;
+ const sessionID = req.sessionID;
+  const user = req.cookies.user;
+  console.log('Session Variables:', req.session.sroname, req.session.docno, req.session.regdocdate);
+  console.log(req.sessionID);
+  console.log(req.session.docno);
+ // Check if the user is logged in
+ if (user && user.loggedIn) {
+    res.setHeader('Cache-Control', 'no-store');
+    res.render('mortgagor', {regdocdate: regdocdate,sroname: sroname,docno: docno,encdate: encdate,bvsno: bvsno,executants: executants});
+  } else {
+    res.redirect('/');
+  }
+});
+
+router.post('/mortgagor',function(req, res,next)  {
+  req.session.regdocdate = req.body.regdocdate || req.session.regdocdate || '';
+  req.session.sroname = req.body.sroname || req.session.sroname || '';
+  req.session.docno = req.body.docno || req.session.docno || '';
+  req.session.encdate = req.body.encdate || req.session.encdate || '';
+  req.session.bvsno = req.body.bvsno || req.session.bvsno || '';
+  req.session.executants = req.body.executants || req.session.executants || '';
+  console.log('Session Variables:', req.session.sroname, req.session.docno, );
   console.log(req.sessionID);
   res.redirect('/ab/searchrprt');
 });
@@ -159,7 +222,49 @@ router.post('/searchrprt',function(req, res,next)  {
   req.session.executants = req.body.executants || req.session.executants || '';
   console.log('Session Variables:', req.session.sroname, req.session.docno, );
   console.log(req.sessionID);
-  res.redirect('/ab/hhh');
+  res.redirect('/ab/ec');
+});
+
+router.get('/ec', function(req, res,next)  {
+  const regdocdate = req.session.regdocdate || '';
+  const sroname = req.session.sroname;
+  const docno = req.session.docno;
+    const encdate = req.session.encdate;
+  const bvsno = req.session.bvsno;
+  const executants = req.session.executants;
+ const sessionID = req.sessionID;
+  const user = req.cookies.user;
+  console.log('Session Variables:', req.session.sroname, req.session.docno, req.session.regdocdate);
+  console.log(req.sessionID);
+  console.log(req.session.docno);
+ // Check if the user is logged in
+ if (user && user.loggedIn) {
+    res.setHeader('Cache-Control', 'no-store');
+    res.render('ec', {regdocdate: regdocdate,sroname: sroname,docno: docno,encdate: encdate,bvsno: bvsno,executants: executants});
+  } else {
+    res.redirect('/');
+  }
+});
+
+router.post('/ec',function(req, res,next)  {
+  req.session.regdocdate = req.body.regdocdate || req.session.regdocdate || '';
+  req.session.sroname = req.body.sroname || req.session.sroname || '';
+  req.session.docno = req.body.docno || req.session.docno || '';
+  req.session.encdate = req.body.encdate || req.session.encdate || '';
+  req.session.bvsno = req.body.bvsno || req.session.bvsno || '';
+  req.session.executants = req.body.executants || req.session.executants || '';
+  console.log('Session Variables:', req.session.sroname, req.session.docno, );
+  console.log(req.sessionID);
+  res.redirect('/ab/final_document');
+});
+
+// Render the final document page
+app.get('/final_document', (req, res) => {
+  // Retrieve the table data from the session
+  const tableData = req.session.tableData;
+
+  // Render the final document page and pass the tableData as a variable
+  res.render('final_document', { tableData: tableData });
 });
 
 
