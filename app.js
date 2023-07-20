@@ -10,13 +10,14 @@ const port = 8080;
 var session = require('express-session');
 
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
 //routes
+app.use('/ab', router); // Assuming '/ab' is the base URL for these routes
+
 app.use('/ab', ab);
 app.use(bodyParser.json());
 app.use('/static', express.static(path.join(__dirname, 'public')));

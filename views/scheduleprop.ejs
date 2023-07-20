@@ -2,73 +2,87 @@
 <html>
   <head>
     <title>schedule property</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="/static/rvgstylesheet.css">
     <a id="header-button" href="/home"><b>INDEX</b></a>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>    
-  </head>
+</head>
   <body style="margin: 0">
     <div class="divstyle">RVG</div>
     <div class="flexContainer">
       <div class="container">
         <div class="list-group">
-          <a
-            href="/ab/perdetails"
-            class="list-group-item list-group-item-action"
-            ><b>Personal Details</b></a
-          >
-          <a 
-           href="/ab/scheduleprop"
-           class="list-group-item list-group-item-action active"
-            ><b>Schedule Property Details</b></a
-          >
-          <a href="/ab/scrunlst" class="list-group-item list-group-item-action"
-            ><b>Scrutinised Document List</b></a
-          >
-          <a href="/ab/mortgagor" class="list-group-item list-group-item-action"
-            ><b>Particulars Of Documents Of Mortgagor</b></a
-          >
-          <a href="/ab/searchrprt" class="list-group-item list-group-item-action"
-            ><b>Search Report Based On Certified Copies</b></a
-          >
-          <a href="/ab/ec" class="list-group-item list-group-item-action"
-            ><b>General Search Based On E.C</b></a
-          >
-          <a class="list-group-item list-group-item-action"
-            ><b>Flow of title</b></a
-          >
-          <a class="list-group-item list-group-item-action"
-            ><b>Document review</b></a
-          >
-        </div>
+          <a href="/ab/perdetails" class="list-group-item list-group-item-action"><b>Personal Details</b></a>
+        <a href="/ab/scheduleprop" class="list-group-item list-group-item-action active"><b>Schedule Property Details</b></a>
+        <a href="/ab/mortgagor" class="list-group-item list-group-item-action"><b>Particulars Of Documents Of Mortgagor</b></a>
+        <a href="/ab/scruntinised" class="list-group-item list-group-item-action"><b>Scrutinised Document List</b></a>
+        <a href="/ab/lstdoc" class="list-group-item list-group-item-action"><b>List of Documents</b></a>
+        <a href="/ab/finaldoc" class="list-group-item list-group-item-action"><b>Document review</b></a>
+         </div>
       </div>
       <div class="div">
         <h3><b>Schedule Property Details</b></h3>
-        <div class="customform">
+        
           <div class="navbar">
             <a href="/home">Index</a>
-          </div>
+        </div>
+    
           
-<form action="/ab/scheduleprop" method="POST">
-  <textarea rows="6" cols="70">
-    East : 48.00 feet  Site belongs to Madireddy Ramanna & others 
-    West : 48.00 feet  Site belongs to Mancham Satyanarayana & others
-    North : 55.00 feet  House belongs to Mancham Satyanarayana
-    South: 53.00 feet  site belongs to Mancham Subbarao & others  
-  </textarea>
+        <form action="/ab/scheduleprop" method="POST">
+
+          <label for="propsurno" style="display: none;">Property survey no :</label>
+          <input type="text" style="display: none" id="propsurno" name="propsurno" value="<%= propsurno %>">
+          <label for="propdoorno" style="display: none;">Property Door no:</label>
+          <input type="text" style="display: none" id="propdoorno" name="propdoorno" value="<%= propdoorno %>">
+          <label for="proparea" style="display: none;">Property Area :</label>
+          <input type="text" style="display: none" id="proparea" name="proparea" value="<%= proparea %>">
+          <label for="regdocdate" style="display: none;">D. Reg DOC date:</label>
+          <input type="text" style="display: none" id="regdocdate" name="regdocdate" value="<%= regdocdate %>">
+          <label for="docno"style="display: none;">DOC No:</label>
+          <input type="text" style="display: none" id="docno" name="docno" value="<%= docno %>">
+          <label for="propdistrict" style="display: none;">Property District:</label>
+          <input type="text" style="display: none" id="propdistrict" name="propdistrict" value="<%= propdistrict %>">
+          <label for="sroname" style="display: none;">SRO Name:</label>
+          <input type="text" style="display: none" id="sroname" name="sroname" value="<%= sroname %>">
+          <label for="propmandal" style="display: none;">Property Mandal:</label>
+          <input type="text" style="display: none" id="propmandal" name="propmandal" value="<%= propmandal %>">
+          <label for="propvillage" style="display: none;">Property Village:</label>
+          <input type="text" style="display: none" id="propvillage" name="propvillage" value="<%= propvillage %>">
+  <textarea rows="10" cols="90">
+    A.Survey No.(in case of land property):-<%= propsurno %> After Sub Divison R.S.No.
+    B.Door No. (in case of House Property): Near the house bearing 
+    Door No. <%= propdoorno %>., As per House Tax House bearing door No.<%= propdoorno %>
+    C.Extent / Area: <%= proparea %>
+    D.Location and boundaries	: As Given Below
+    (PROPERTY REFERRED IN THE REGISTERED SALE DEED DATED. 
+    <%= regdocdate %>  VIDE DOCUMENT NO.<%= docno %> OF 2013   OF <%= sroname %> SRO )
+    District:<%= propdistrict %> Dist Registry:<%= sroname %> SRO Mandal: <%= propmandal %>     
+    Village: <%= propvillage %> town with in <%= propvillage %> Municipal Area
+    All Part and Parcel of the site and RCC Dabha House ground and 
+    1st floor residential building bearing near the house bearing door no.<%= propdoorno %>, 
+    As per House Tax House bearing door No.<%= propdoorno %> for a middle extent of <%= proparea %>
+     out of full extent of  Ac. 0-33 ½ cents of site  in 14th block, 
+    <%= propvillage %> town with in <%= propvillage %> Municipal 
+    Area in R.S.No. after sub division R.S.No. bounded by:-
+    East: 35-06 Feet=10.820 Meters – Site belongs to Sheik Babulu  
+    West: 35-06 Feet=10.820 Meters – Road for a width of 20 feet  
+    North: 49-06 feet = 15.087 meters = Site belongs to Seeram Nookaraju and Raghu Babu
+    South: 49-06 feet = 15.087 meters = Road for a width of 20 feet  
+	  Within the above said boundaries site for an extent of <%= proparea %>
+     of site and RCC Dabha house  with all doors, doorways, windows, roof etc., 
+    with all usual pathways, water ways, vehicular ways etc., with all easementary rights, 
+    corporeal and incorporeal rights etc.,
+    Out of that, As per Registered Gift Deed dated. 06-09-2022 vide doc No. <%= docno %> of 2022  of <%= sroname %> SRO., 
+    executed in favour of Ramachandrapuram Municipality  Rep. By its Present Municipal Commissioner Kusam Srikantha Reddy,
+    gifted by Kantipudi Sai Ram for an extent of 11-66 sq. yards = 9.74 sq. meters Now remaining extent of 182.34 sq.
+    yards = 152.46 sq.yards and house therein available for mortgage. 
+</textarea>
   <br>
   <br>
-  <br>
-  <button type="submit" class="btn btn-primary mb-3">Submit</button>
+  
+    <div class="col-sm-3" style="margin-left: 25vw;">
+    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+  </div> 
 </form>
         </div>
       </div>

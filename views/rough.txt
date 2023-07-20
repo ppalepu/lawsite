@@ -1,0 +1,381 @@
+//router.get('/scrunlst', function(req, res,next)  {
+  //const { sno, date, description, nature } = req.session.tableData;
+  //const tableData = { sno, date, description, nature }; 
+   //const sroname = req.session.sroname;
+  //const docno = req.session.docno;
+    //const sessionID = req.sessionID;
+  //const user = req.cookies.user;
+  //console.log('Session Variables:', req.session.sroname, req.session.docno);
+  //console.log(req.session.docno);
+  //console.log(req.sessionID);
+
+ // Check if the user is logged in
+ //if (user && user.loggedIn) {
+   //   res.setHeader('Cache-Control', 'no-store');
+    //res.render('scrunlst', {sno: sno,date: date,description: description,nature: nature,sroname: sroname,docno: docno});
+  //} else {
+    //res.redirect('/');
+  //}
+//});
+
+//router.post('/scrunlst',function(req, res,next)  {
+  //const { sno, date, description, nature } = req.body;
+  //req.session.tableData = { sno, date, description, nature };  
+  //req.session.sroname = req.body.sroname || req.session.sroname || '';
+  //req.session.docno = req.body.docno || req.session.docno || '';
+   //console.log('Session Variables:', req.session.sroname, req.session.docno, );
+  //console.log(req.sessionID);
+  //console.log(tableData);
+  //res.redirect('/ab/mortgagor');
+//});
+
+// router.get('/scrunlst', function(req, res, next) {
+//   const tableData = req.session.tableData?.sno
+//     ? req.session.tableData
+//     : { sno: '', date: '', description: '', nature: '' };
+
+//   const sroname = req.session.sroname || '';
+//   const docno = req.session.docno || '';
+//   const sessionID = req.sessionID;
+//   const user = req.cookies.user;
+
+//   console.log('Session Variables:', req.session.sroname, req.session.docno);
+//   console.log(req.session.docno);
+//   console.log(req.sessionID);
+
+//   // Check if the user is logged in
+//   if (user && user.loggedIn) {
+//     res.setHeader('Cache-Control', 'no-store');
+//     res.render('scrunlst', {
+//       sno: tableData.sno,
+//       date: tableData.date,
+//       description: tableData.description,
+//       nature: tableData.nature,
+//       sroname: sroname,
+//       docno: docno
+//     });
+//   } else {
+//     res.redirect('/');
+//   }
+// });
+
+// router.post('/scrunlst', function(req, res, next) {
+//   const { sno, date, description, nature } = req.body;
+//   req.session.tableData = { sno, date, description, nature };
+//   req.session.sroname = req.body.sroname || req.session.sroname || '';
+//   req.session.docno = req.body.docno || req.session.docno || '';
+
+//   console.log('Session Variables:', req.session.sroname, req.session.docno);
+//   console.log(req.sessionID);
+//   console.log(req.session.tableData);
+
+//   res.redirect('/ab/mortgagor');
+// });
+router.get('/scrunlst', function(req, res, next) {
+  const tableData = req.session.tableData || [];
+
+  const sroname = req.session.sroname || '';
+  const docno = req.session.docno || '';
+  const sessionID = req.sessionID;
+  const user = req.cookies.user;
+
+  console.log('Session Variables:', req.session.sroname, req.session.docno);
+  console.log(req.session.docno);
+  console.log(req.sessionID);
+
+  // Check if the user is logged in
+  if (user && user.loggedIn) {
+    res.setHeader('Cache-Control', 'no-store');
+    res.render('scrunlst', {
+      tableData: tableData,
+      sroname: sroname,
+      docno: docno
+    });
+  } else {
+    res.redirect('/');
+  }
+});
+
+router.post('/scrunlst', function(req, res, next) {
+  const { body } = req;
+  const rowCount = Object.keys(body).filter(key => key.startsWith('sno')).length;
+
+  const tableData = [];
+  for (let i = 0; i < rowCount; i++) {
+    const sno = body[`sno${i}`] || '';
+    const date = body[`date${i}`] || '';
+    const description = body[`description${i}`] || '';
+    const nature = body[`nature${i}`] || '';
+
+    tableData.push({ sno, date, description, nature });
+  }
+
+  req.session.tableData = tableData;
+  req.session.sroname = body.sroname || req.session.sroname || '';
+  req.session.docno = body.docno || req.session.docno || '';
+
+  console.log('Session Variables:', req.session.sroname, req.session.docno);
+  console.log(req.sessionID);
+  console.log(req.session.tableData);
+
+  res.redirect('/ab/mortgagor');
+});
+
+router.get('/searchrprt', function(req, res,next)  {
+  const regdocdate = req.session.regdocdate || '';
+  const sroname = req.session.sroname;
+  const docno = req.session.docno;
+    const encdate = req.session.encdate;
+  const bvsno = req.session.bvsno;
+  const executants = req.session.executants;
+ const sessionID = req.sessionID;
+  const user = req.cookies.user;
+  console.log('Session Variables:', req.session.sroname, req.session.docno, req.session.regdocdate);
+  console.log(req.sessionID);
+  console.log(req.session.docno);
+ // Check if the user is logged in
+ if (user && user.loggedIn) {
+    res.setHeader('Cache-Control', 'no-store');
+    res.render('searchrprt', {regdocdate: regdocdate,sroname: sroname,docno: docno,encdate: encdate,bvsno: bvsno,executants: executants});
+  } else {
+    res.redirect('/');
+  }
+});
+
+router.post('/searchrprt',function(req, res,next)  {
+  req.session.regdocdate = req.body.regdocdate || req.session.regdocdate || '';
+  req.session.sroname = req.body.sroname || req.session.sroname || '';
+  req.session.docno = req.body.docno || req.session.docno || '';
+  req.session.encdate = req.body.encdate || req.session.encdate || '';
+  req.session.bvsno = req.body.bvsno || req.session.bvsno || '';
+  req.session.executants = req.body.executants || req.session.executants || '';
+  console.log('Session Variables:', req.session.sroname, req.session.docno, );
+  console.log(req.sessionID);
+  res.redirect('/ab/ec');
+});
+
+router.get('/ec', function(req, res,next)  {
+  const regdocdate = req.session.regdocdate || '';
+  const sroname = req.session.sroname;
+  const docno = req.session.docno;
+    const encdate = req.session.encdate;
+  const bvsno = req.session.bvsno;
+  const executants = req.session.executants;
+ const sessionID = req.sessionID;
+  const user = req.cookies.user;
+  console.log('Session Variables:', req.session.sroname, req.session.docno, req.session.regdocdate);
+  console.log(req.sessionID);
+  console.log(req.session.docno);
+ // Check if the user is logged in
+ if (user && user.loggedIn) {
+    res.setHeader('Cache-Control', 'no-store');
+    res.render('ec', {regdocdate: regdocdate,sroname: sroname,docno: docno,encdate: encdate,bvsno: bvsno,executants: executants});
+  } else {
+    res.redirect('/');
+  }
+});
+
+router.post('/ec',function(req, res,next)  {
+  req.session.regdocdate = req.body.regdocdate || req.session.regdocdate || '';
+  req.session.sroname = req.body.sroname || req.session.sroname || '';
+  req.session.docno = req.body.docno || req.session.docno || '';
+  req.session.encdate = req.body.encdate || req.session.encdate || '';
+  req.session.bvsno = req.body.bvsno || req.session.bvsno || '';
+  req.session.executants = req.body.executants || req.session.executants || '';
+  console.log('Session Variables:', req.session.sroname, req.session.docno, );
+  console.log(req.sessionID);
+  res.redirect('/ab/final_document');
+});
+
+// Render the final document page
+app.get('/final_document', (req, res) => {
+  // Retrieve the table data from the session
+  const tableData = req.session.tableData;
+
+  // Render the final document page and pass the tableData as a variable
+  res.render('final_document', { tableData: tableData });
+});
+
+
+
+
+To render multiple EJS pages containing tables in the final document template, you can follow these steps:
+
+Create separate EJS template files for each page that contains a table (e.g., "page1.ejs", "page2.ejs", etc.). Each template should include the HTML code for the respective table.
+
+In your Node.js server code, render each EJS page template and pass any necessary data as an object.
+
+javascript
+Copy code
+const express = require('express');
+const app = express();
+
+// Set the view engine to use EJS
+app.set('view engine', 'ejs');
+
+// Render each page template
+app.get('/page1', (req, res) => {
+  const data = {
+    // Data for page 1 table
+  };
+
+  res.render('page1', data);
+});
+
+app.get('/page2', (req, res) => {
+  const data = {
+    // Data for page 2 table
+  };
+
+  res.render('page2', data);
+});
+
+// Render the final document template
+app.get('/final-document', (req, res) => {
+  // Render each page template and store the rendered HTML in variables
+  const page1HTML = await ejs.renderFile('page1.ejs', dataForPage1);
+  const page2HTML = await ejs.renderFile('page2.ejs', dataForPage2);
+
+  // Render the final document template and pass the rendered HTML of each page
+  res.render('finalDocument', { page1HTML, page2HTML });
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+In the final document template (e.g., "finalDocument.ejs"), you can access the rendered HTML of each page using EJS tags. Place the rendered HTML in the appropriate section of the final document template.
+
+ejs
+Copy code
+<html>
+  <head>
+    <!-- Head section of the final document -->
+  </head>
+  <body>
+    <!-- Body section of the final document -->
+
+    <h1>Page 1</h1>
+    <div>
+      <!-- Rendered HTML of page 1 table -->
+      <%- page1HTML %>
+    </div>
+
+    <h1>Page 2</h1>
+    <div>
+      <!-- Rendered HTML of page 2 table -->
+      <%- page2HTML %>
+    </div>
+
+    <!-- Footer section of the final document -->
+  </body>
+</html>
+The page1HTML and page2HTML variables contain the rendered HTML of each page. By using <%- page1HTML %> and <%- page2HTML %> in the final document template, the respective tables will be included when rendering the final document.
+
+Make sure to adjust the file paths, data, and structure according to your project's needs. This approach allows you to render separate EJS pages containing tables and then include them in the final document template.
+
+<script>
+       
+        window.onload = function () {
+  var table = document.getElementById("myTable");
+  for (var i = 0; i < table.rows.length; i++) {
+    var row = table.rows[i];
+    for (var j = 1; j < row.cells.length; j++) {
+                   var cell = row.cells[j];
+                   var key = "row_" + i + "_cell_" + j;
+                   var value = sessionStorage.getItem(key);
+                 if (value) {
+                     cell.innerHTML = value;
+    addEventListenersToCells(row);
+                 }
+                }
+  }
+};
+
+        function addRow() {
+            var table = document.getElementById("myTable");
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = rowCount; // Serial Number
+            cell2.contentEditable = true;
+            cell3.contentEditable = true;
+            cell4.contentEditable = true;
+
+            // Store values in session storage when cell content changes for the newly added row
+            addEventListenersToCells(row);
+        }
+
+        function addEventListenersToCells(row) {
+            // Store values in session storage when cell content changes for the newly added row
+            var cells = row.getElementsByTagName('td');
+            for (var j = 1; j < row.cells.length; j++) {
+                var cell = row.cells[j];
+                cell.contentEditable = true; // Make sure the cell is editable
+                cell.oninput = function () {
+        //             var key = "row_" + this.parentNode.rowIndex + "_cell_" + this.cellIndex;
+        //             sessionStorage.setItem(key, this.innerHTML);
+        //         };
+        //     }
+        // }
+        updateSessionStorage(); // Update session storage when cell content changes
+    };
+  }
+}
+
+        function deleteRow() {
+            var table = document.getElementById("myTable");
+            var rowCount = table.rows.length;
+            if (rowCount > 1) {
+                table.deleteRow(rowCount - 1);
+                updateSessionStorage();
+            }
+        }
+
+        function updateSessionStorage() {
+            // Store values in session storage when cell content changes for the existing rows
+            var table = document.getElementById("myTable");
+            for (var i = 0; i < table.rows.length; i++) {
+                var row = table.rows[i];
+                for (var j = 1; j < row.cells.length; j++) {
+                  var cell = row.cells[j];
+      var key = "row_" + i + "_cell_" + j;
+      sessionStorage.setItem(key, cell.innerHTML);
+    }
+  }
+}
+
+                   
+        //             }; // var cell = row.cells[j];
+        //             // cell.contentEditable = true; // Make sure the cell is editable
+        //             // cell.oninput = function () {
+        //             //     var key = "row_" + this.parentNode.rowIndex + "_cell_" + this.cellIndex;
+        //             //     sessionStorage.setItem(key, this.innerHTML);
+        //         }
+        //     }
+        // }
+    </script>
+const express = require('express');
+const app = express();
+
+// Set the view engine to EJS
+app.set('view engine', 'ejs');
+
+// Render the template and pass the scrutinisedDocuments data
+app.get('/final-document', (req, res) => {
+  const scrutinisedDocuments = [
+    { date: '2022-01-01', description: 'Document 1', nature: 'Nature 1' },
+    { date: '2022-02-02', description: 'Document 2', nature: 'Nature 2' },
+    // Add more data as needed
+  ];
+
+  res.render('final-document', { scrutinisedDocuments });
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});
