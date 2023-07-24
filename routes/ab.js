@@ -164,6 +164,31 @@ router.post('/searchrprt',function(req, res,next)  {
 
 
 
+router.get('/history', function(req,res,next) {
+  const user = req.cookies.user;
+  const banktype = ' ';
+  const customperiod = ' ';
+  
+  const sessionID = req.sessionID;
+  console.log(req.session.docno);
+  console.log(req.sessionID);
+  
+if (user && user.loggedIn) {
+  // Check if the user is logged in
+  console.log("history page connected");
+ res.setHeader('Cache-Control', 'no-store');
+ res.render('history', {banktype:banktype, customperiod:customperiod} );
+} else {
+ res.redirect('/');
+} });
+
+router.post('/history', function(req,res,next) {
+  req.session.banktype = req.body.banktype || '';
+  req.session.customperiod = req.body.customperiod || '';
+  console.log('Session Variables:', req.session.banktype, req.session.customperiod, );
+  console.log(req.sessionID);
+  res.redirect('/ab/xxx');
+});
 
 
 module.exports = router;
