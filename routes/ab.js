@@ -1,5 +1,5 @@
 var express = require('express');
-const router = express.Router();
+var router = express.Router();
 var path = require('path');
 var app = express();
 const bodyParser = require('body-parser');
@@ -68,7 +68,7 @@ router.post('/perdetails',function(req, res)  {
   req.session.regdocdate = req.body.regdocdate || '';
   req.session.sroname = req.body.sroname || '';
   req.session.docno = req.body.docno || '';
-  req.session.propsurno = req.body.propsurno;
+  req.session.propsurno = req.body.propsurno || '';
   req.session.propdoorno = req.body.propdoorno || '';
   req.session.propolddoorno = req.body.propolddoorno || '';
   req.session.proparea = req.body.proparea || '';
@@ -353,47 +353,6 @@ router.get('/finaldoc', function(req, res)  {
   console.log(req.sessionID);
  // Check if the user is logged in
  if (user && user.loggedIn) {
-  const tableHTML = `
-    <table id="mytable" class="table table-fixed table-bordered align-middle mytable">
-      <tr> 
-        <td>DOC No</td>
-        <td contenteditable="true">${docno}</td>
-      </tr>
-      <tr>
-        <td>Nature Of The Document</td>
-        <td contenteditable="true">Registration Partition Deed</td>
-      </tr>
-      <tr>
-        <td>Date of presentation</td>
-        <td contenteditable="true">${dateOfPresentation}</td>
-      </tr>
-      <tr>
-        <td>Reg DOC Date</td>
-        <td contenteditable="true">${regdocdate}</td>
-      </tr>
-      <tr>
-        <td>Executants</td>
-        <td contenteditable="true">${executants}</td>
-      </tr>
-      <tr>
-        <td>Claimants</td>
-        <td contenteditable="true">${claimants}</td>
-      </tr>
-      <tr>
-        <td>Registration office</td>
-        <td contenteditable="true">${regOffice}</td>
-      </tr>
-      <tr>
-        <td>Book No./Volume No./Scan No.</td>
-        <td contenteditable="true">${bvsno}</td>
-      </tr>
-      <tr>
-        <td>No. of pages</td>
-        <td contenteditable="true">${pages}</td>
-      </tr>
-    </table>
-  `;
-
     res.render('finaldoc',{tableHTML: tableHTML,regdocdate: regdocdate,docno: docno,bvsno: bvsno,executants: executants,nature: nature,dop: dateOfPresentation,pages: pages,claimants: claimants,regOffice: regOffice});
   } else {
     res.redirect('/');
