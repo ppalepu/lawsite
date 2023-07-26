@@ -360,5 +360,46 @@ router.get('/finaldoc', function(req, res)  {
 });
 
 
+router.post('/searchrprt',function(req, res,next)  {
+  req.session.regdocdate = req.body.regdocdate || req.session.regdocdate || '';
+  req.session.sroname = req.body.sroname || req.session.sroname || '';
+  req.session.docno = req.body.docno || req.session.docno || '';
+  req.session.encdate = req.body.encdate || req.session.encdate || '';
+  req.session.bvsno = req.body.bvsno || req.session.bvsno || '';
+  req.session.executants = req.body.executants || req.session.executants || '';
+  console.log('Session Variables:', req.session.sroname, req.session.docno, );
+  console.log(req.sessionID);
+  res.redirect('/ab/hhh');
+});
+
+
+
+router.get('/history', function(req,res,next) {
+  const user = req.cookies.user;
+  const banktype = ' ';
+  const customperiod = ' ';
+  
+  const sessionID = req.sessionID;
+  console.log(req.session.docno);
+  console.log(req.sessionID);
+  
+if (user && user.loggedIn) {
+  // Check if the user is logged in
+  console.log("history page connected");
+ res.setHeader('Cache-Control', 'no-store');
+ res.render('history', {banktype:banktype, customperiod:customperiod} );
+} else {
+ res.redirect('/');
+} });
+
+router.post('/history', function(req,res,next) {
+  req.session.banktype = req.body.banktype || '';
+  req.session.customperiod = req.body.customperiod || '';
+  console.log('Session Variables:', req.session.banktype, req.session.customperiod, );
+  console.log(req.sessionID);
+  res.redirect('/ab/xxx');
+});
+>
+
 
 module.exports = router;
